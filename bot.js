@@ -1,55 +1,28 @@
-﻿const Discord = require('discord.js');
-const client = new Discord.Client();
-var prefix = "!"
+if(!Discord) var Discord = require('discord.js');
+if(!client) var client = new Discord.Client();
+if(!prefix) var prefix = "j-";
 
-
-client.on('ready', function() {
-    console.log(`i am ready ${client.user.username}`);
-});
-
-
-
-
-
-
-
-
-
-
-
-const developers = ["518012022500229122","",""]
-const adminprefix = "!";
+const adminprefix = "j-";
+const devs = ['506899150454128640'];
 client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!developers.includes(message.author.id)) return;
-      
-  if (message.content.startsWith(adminprefix + 'ply')) {
-    client.user.setGame(argresult);
-      message.channel.send(`**Now Playig   ${argresult}**`)
-  } else 
-     if (message.content === (adminprefix + "leaveserver")) {
-    message.guild.leave();        
-  } else  
-  if (message.content.startsWith(adminprefix + 'wat')) {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+if (message.content.startsWith(adminprefix + 'play')) {
+  client.user.setGame(argresult)
+    message.channel.sendMessage(`**:white_check_mark: | ${argresult}**`).then(message => {message.delete(6000)})
+} else 
+  if (message.content.startsWith(adminprefix + 'wt')) {
   client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**Now Watching   ${argresult}**`)
+      message.channel.sendMessage(`**:white_check_mark: | ${argresult}**`).then(message => {message.delete(6000)})
   } else 
   if (message.content.startsWith(adminprefix + 'lis')) {
   client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**Now Listening   ${argresult}**`)
+      message.channel.sendMessage(`**:white_check_mark: | ${argresult}**`).then(message => {message.delete(6000)})
   } else 
-  if (message.content.startsWith(adminprefix + 'stream')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/idk");
-      message.channel.send(`**Now Streaming   ${argresult}**`)
-  }
-  if (message.content.startsWith(adminprefix + 'setname')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-} else
-if (message.content.startsWith(adminprefix + 'setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+if (message.content.startsWith(adminprefix + 'st')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/Allwai")
+    message.channel.sendMessage(`**:white_check_mark: | ${argresult}**`).then(message => {message.delete(6000)})
 }
 });
 
-client.login(process.env.BOT_TOKEN); 
+client.login(process.env.BOT_TOKEN);
